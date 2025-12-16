@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoViz Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">AlgoViz</div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="sorting">Sorting</button>
+      <button class="tab-btn" data-tab="tree">Tree Traversal</button>
+    </div>
+  </nav>
+
+  <section id="sorting" class="view active">
+    <div class="controls-bar">
+      <div class="input-group">
+        <label>Size</label>
+        <input type="range" id="sortSize" min="5" max="80" value="30">
+      </div>
+      <div class="input-group">
+        <label>Speed</label>
+        <input type="range" id="sortSpeed" min="1" max="100" value="60">
+      </div>
+
+      <select id="sortAlgo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="insertion">Insertion Sort</option>
+        <option value="quick">Quick Sort</option>
+        <option value="merge">Merge Sort</option>
+      </select>
+
+      <div class="actions">
+        <button id="btnRandomize" class="secondary">Randomize</button>
+        <button id="btnSort" class="primary">Start</button>
+        <button id="btnStop" class="danger" disabled>Stop</button>
+        <button id="btnReset" class="warning">Reset</button>
+      </div>
+    </div>
+
+    <div id="arrayContainer"></div>
+
+    <div class="stats-panel">
+      <span>Steps: <b id="statSteps">0</b></span>
+      <span>Comparisons: <b id="statComps">0</b></span>
+      <span>Swaps/Overwrites: <b id="statSwaps">0</b></span>
+    </div>
+  </section>
+
+  <section id="tree" class="view">
+    <div class="tree-layout">
+      <div class="sidebar">
+        <h3>Tree Traversal</h3>
+
+        <div class="panel">
+          <h4>Build a Binary Tree (Level-Order)</h4>
+          <p style="font-size:0.8rem; opacity:0.85; line-height:1.3;">
+            Enter integers in <b>level order</b> (BFS order).
+            Use <code>null</code> to skip a child.
+            <br>Example: <code>1,2,3,4,5,6,7</code>
+          </p>
+
+          <textarea id="treeValues"
+            style="width:100%; height:90px; resize:none;"
+            placeholder="Example: 1,2,3,4,5,6,7"></textarea>
+
+          <button id="btnBuildTree" class="secondary full-width" style="margin-top:10px;">
+            Build Tree
+          </button>
+
+          <div id="treeBuildMsg" class="result-box">Tree: not built</div>
+        </div>
+
+        <div class="panel">
+          <h4>Traversal</h4>
+
+          <select id="treeAlgo" style="width:100%; margin-top:6px;">
+            <option value="dfs_in">Inorder (L → Root → R)</option>
+            <option value="dfs_pre">Preorder (Root → L → R)</option>
+            <option value="dfs_post">Postorder (L → R → Root)</option>
+            <option value="bfs">Level Order (BFS)</option>
+          </select>
+
+          <button id="runTree" class="primary full-width" style="margin-top:12px;">Run</button>
+          <div id="treeResult" class="result-box">Result: -</div>
+        </div>
+      </div>
+
+      <div class="main-canvas">
+        <svg id="treeSvg" width="100%" height="100%"></svg>
+      </div>
+    </div>
+  </section>
+
+  <script src="js_files/main.js"></script>
+  <script src="js_files/sorting.js"></script>
+  <script src="js_files/tree.js"></script>
+</body>
+</html>
